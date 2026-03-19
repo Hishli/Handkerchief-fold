@@ -1,0 +1,110 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}
+
+#app {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+}
+
+h1 { font-size: 2rem; margin-bottom: 8px; }
+
+#instruction {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 20px;
+  min-height: 24px;
+}
+
+#canvas-area {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 24px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#handkerchief {
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(145deg, #f5f0e8, #e8dcc8);
+  border: 3px solid #c9b99a;
+  border-radius: 8px;
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* Visual fold states */
+#handkerchief.flat     { transform: none; }
+#handkerchief.half     { transform: scaleY(0.5) translateY(55px); border-radius: 8px 8px 0 0; }
+#handkerchief.quarter  { transform: scale(0.5) translate(55px, 55px); }
+#handkerchief.triangle { transform: rotate(45deg) scale(0.75); border-radius: 0; }
+#handkerchief.crumple  { transform: scale(0.6) rotate(15deg); border-radius: 50%; }
+#handkerchief.fan      { transform: scaleX(0.3) scaleY(1.2); border-radius: 4px; }
+#handkerchief.rose     { transform: scale(0.5) rotate(30deg); border-radius: 50% 10% 50% 10%; }
+
+#fold-label {
+  position: absolute;
+  bottom: -10px;
+  font-size: 0.75rem;
+  color: #ccc;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 16px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+  background: linear-gradient(145deg, #2a2a4a, #1e1e3a);
+  color: white;
+  box-shadow: 4px 4px 10px #0d0d1f, -2px -2px 6px #3a3a5a;
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: inset 2px 2px 6px #0d0d1f;
+}
+
+#btn-tap   { background: linear-gradient(145deg, #0f3460, #533483); }
+#btn-hold  { background: linear-gradient(145deg, #e94560, #c23152); }
+#btn-release { background: linear-gradient(145deg, #0f9b8e, #0a7060); }
+#btn-reset { background: linear-gradient(145deg, #444, #222); }
+
+#result-badge {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffd700;
+  min-height: 30px;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
