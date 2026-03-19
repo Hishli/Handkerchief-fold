@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fold It! 🧣</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>🧣 Fold It!</h1>
+    <p id="instruction">Choose an action below</p>
+
+    <div id="canvas-area">
+      <div id="handkerchief" class="flat"></div>
+      <div id="fold-label"></div>
+    </div>
+
+    <div id="controls">
+      <button id="btn-tap" onpointerdown="doAction('tap')">👆 Tap</button>
+      <button id="btn-hold" onpointerdown="startHold()" onpointerup="endHold()">✋ Hold</button>
+      <button id="btn-release" onclick="doAction('release')">🌀 Release</button>
+      <button id="btn-reset" onclick="resetAll()">🔄 Reset</button>
+    </div>
+
+    <div id="result-badge"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
